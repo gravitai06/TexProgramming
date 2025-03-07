@@ -24,14 +24,14 @@ Car* addToEnd(Car* head, string brand, int year, double price) {
   newCar->brand = brand;
   newCar->year = year;
   newCar->price = price;
-  newCar->next = nullptr;
+  newCar->next = NULL;
 
-  if (head == nullptr) {
+  if (head == NULL) {
     return newCar;
   }
 
   Car* temp = head;
-  while (temp->next != nullptr) {
+  while (temp->next != NULL) {
     temp = temp->next;
   }
   temp->next = newCar;
@@ -41,10 +41,10 @@ Car* addToEnd(Car* head, string brand, int year, double price) {
 void addAfter(Car* head, string targetBrand, string brand, int year,
               double price) {
   Car* temp = head;
-  while (temp != nullptr && temp->brand != targetBrand) {
+  while (temp != NULL && temp->brand != targetBrand) {
     temp = temp->next;
   }
-  if (temp != nullptr) {
+  if (temp != NULL) {
     Car* newCar = new Car;
     newCar->brand = brand;
     newCar->year = year;
@@ -58,7 +58,7 @@ void addAfter(Car* head, string targetBrand, string brand, int year,
 
 Car* addBefore(Car* head, string targetBrand, string brand, int year,
                double price) {
-  if (head == nullptr) {
+  if (head == NULL) {
     cout << "Список пуст." << endl;
     return head;
   }
@@ -68,10 +68,10 @@ Car* addBefore(Car* head, string targetBrand, string brand, int year,
   }
 
   Car* temp = head;
-  while (temp->next != nullptr && temp->next->brand != targetBrand) {
+  while (temp->next != NULL && temp->next->brand != targetBrand) {
     temp = temp->next;
   }
-  if (temp->next != nullptr) {
+  if (temp->next != NULL) {
     Car* newCar = new Car;
     newCar->brand = brand;
     newCar->year = year;
@@ -85,7 +85,7 @@ Car* addBefore(Car* head, string targetBrand, string brand, int year,
 }
 
 Car* deleteElement(Car* head, string targetBrand) {
-  if (head == nullptr) {
+  if (head == NULL) {
     cout << "Список пуст." << endl;
     return head;
   }
@@ -98,10 +98,10 @@ Car* deleteElement(Car* head, string targetBrand) {
   }
 
   Car* temp = head;
-  while (temp->next != nullptr && temp->next->brand != targetBrand) {
+  while (temp->next != NULL && temp->next->brand != targetBrand) {
     temp = temp->next;
   }
-  if (temp->next != nullptr) {
+  if (temp->next != NULL) {
     Car* toDelete = temp->next;
     temp->next = temp->next->next;
     delete toDelete;
@@ -113,7 +113,7 @@ Car* deleteElement(Car* head, string targetBrand) {
 
 void printList(Car* head) {
   Car* temp = head;
-  while (temp != nullptr) {
+  while (temp != NULL) {
     cout << "Марка: " << temp->brand << ", Год: " << temp->year
          << ", Цена: " << temp->price << endl;
     temp = temp->next;
@@ -121,7 +121,7 @@ void printList(Car* head) {
 }
 
 int main() {
-  Car* head = nullptr;
+  Car* head = NULL;
 
   head = addToEnd(head, "Toyota", 2020, 15000.0);
   head = addToEnd(head, "Honda", 2019, 14000.0);
