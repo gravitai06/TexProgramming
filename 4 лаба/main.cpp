@@ -79,6 +79,41 @@ void printCars(const vector<Car>& cars) {
   }
 }
 
+void updateCar(vector<Car>& cars) {
+  cout << "Введите номер машины для редактирования (1 - " << cars.size()
+       << "): ";
+  int idx;
+  cin >> idx;
+  if (idx < 1 || idx > (int)cars.size()) {
+    cout << "Неверный номер.\n";
+    return;
+  }
+  Car& c = cars[idx - 1];
+
+  cout << "Редактирование машины #" << idx
+       << " (оставьте пустым и нажмите Enter, чтобы пропустить поле):\n";
+
+  cout << "Текущая марка: " << c.brand << "\nВведите новую марку: ";
+  string input;
+  cin.ignore();
+  getline(cin, input);
+  if (!input.empty()) c.brand = input;
+
+  cout << "Текущая модель: " << c.model << "\nВведите новую модель: ";
+  getline(cin, input);
+  if (!input.empty()) c.model = input;
+
+  cout << "Текущий год выпуска: " << c.year << "\nВведите новый год выпуска: ";
+  getline(cin, input);
+  if (!input.empty()) c.year = stoi(input);
+
+  cout << "Текущая цена: " << c.price << "\nВведите новую цену: ";
+  getline(cin, input);
+  if (!input.empty()) c.price = stod(input);
+
+  cout << "Машина обновлена.\n";
+}
+
 int main() {
   vector<Car> cars;
   const string filename = "cars.txt";
@@ -91,6 +126,7 @@ int main() {
     cout << "2. Добавить машину\n";
     cout << "3. Удалить машину\n";
     cout << "4. Сохранить и выйти\n";
+    cout << "5. Обновить машину\n";
     cout << "Выберите действие: ";
 
     int choice;
@@ -109,6 +145,10 @@ int main() {
         saveToFile(cars, filename);
         cout << "Данные сохранены. Выход.\n";
         return 0;
+      case 5:
+        updateCar(cars);
+        break;
+
       default:
         cout << "Неверный выбор.\n";
     }
